@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jhansi Sai Laxmi | School Fee Payment Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">JS</div><div><strong>JHANSI SAI LAXMI</strong><small>FEE MANAGEMENT</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <button class="nav-link active" data-view="dashboard"><span>▦</span> Dashboard</button>
+      <button class="nav-link" data-view="students"><span>♙</span> Students</button>
+      <button class="nav-link" data-view="fees"><span>▤</span> Fee Details</button>
+      <button class="nav-link" data-view="payments"><span>₹</span> Payments</button>
+      <button class="nav-link" data-view="reports"><span>▧</span> Reports</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="admin-avatar">A</div><div><strong>Administrator</strong><small>School Admin</small></div><span class="online"></span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">SCHOOL ADMINISTRATION</div><h1 id="page-title">Dashboard</h1></div><div class="top-actions"><span class="today" id="today"></span><div class="top-avatar">A</div></div></header>
+    <section id="dashboard-view" class="view">
+      <div class="welcome"><div><span class="welcome-tag">FEE OVERVIEW · 2026–2027</span><h2>Welcome back, Administrator</h2><p>Here’s what’s happening with your school fee collection.</p></div><div class="welcome-icon">▤</div></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-top"><span>Total Students</span><span class="stat-icon blue">♙</span></div><strong id="stat-students">—</strong><small>Registered students</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Total Fees Assigned</span><span class="stat-icon purple">▤</span></div><strong id="stat-fees">—</strong><small>Across all fee records</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Amount Collected</span><span class="stat-icon green">₹</span></div><strong id="stat-collected">—</strong><small>Payments received</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Pending Amount</span><span class="stat-icon orange">◷</span></div><strong id="stat-pending">—</strong><small>Outstanding balance</small></article>
+      </div>
+      <div class="content-grid">
+        <article class="panel"><div class="panel-heading"><div><h3>Quick actions</h3><p>Manage your fee operations</p></div></div><div class="quick-actions">
+          <button class="quick-card" data-go="students"><span class="quick-icon blue">＋</span><b>Add student</b><small>Register a new student</small></button>
+          <button class="quick-card" data-go="fees"><span class="quick-icon purple">▤</span><b>Assign fee</b><small>Create a fee record</small></button>
+          <button class="quick-card" data-go="payments"><span class="quick-icon green">₹</span><b>Record payment</b><small>Save a fee payment</small></button>
+          <button class="quick-card" data-go="reports"><span class="quick-icon orange">▧</span><b>View reports</b><small>Student fee statements</small></button>
+        </div></article>
+        <article class="panel note-panel"><div class="panel-heading"><div><h3>Fee management</h3><p>Keep payment records up to date</p></div><span class="note-symbol">✓</span></div><p class="note-copy">Use the Students section to maintain student details, Fee Details to assign academic-year fees, and Payments to record collections with unique receipt numbers.</p><div class="note-foot">● &nbsp; Database connection is checked when data loads.</div></article>
+      </div>
+    </section>
+    <section id="students-view" class="view hidden">
+      <div class="section-toolbar"><div><h2>Student directory</h2><p>Manage student profiles and contact details.</p></div><button class="primary-btn" id="add-student-btn">＋ Add Student</button></div>
+      <div class="panel table-panel"><div class="table-tools"><input id="student-search" class="search" placeholder="Search name, class or phone…"></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>STUDENT NAME</th><th>CLASS</th><th>PHONE</th><th>EMAIL</th><th>ASSIGNED</th><th>PAID</th><th>ACTION</th></tr></thead><tbody id="students-body"></tbody></table></div></div>
+    </section>
+    <section id="fees-view" class="view hidden">
+      <div class="section-toolbar"><div><h2>Fee details</h2><p>Assign fees and monitor outstanding balances.</p></div><button class="primary-btn" id="add-fee-btn">＋ Assign Fee</button></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>FEE ID</th><th>STUDENT</th><th>ACADEMIC YEAR</th><th>FEE TYPE</th><th>TOTAL</th><th>PAID</th><th>BALANCE</th><th>DUE DATE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="fees-body"></tbody></table></div></div>
+    </section>
+    <section id="payments-view" class="view hidden">
+      <div class="section-toolbar"><div><h2>Payment records</h2><p>Record collections and track receipt details.</p></div><button class="primary-btn" id="add-payment-btn">＋ Record Payment</button></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>RECEIPT NO.</th><th>STUDENT</th><th>FEE TYPE</th><th>AMOUNT PAID</th><th>PAYMENT DATE</th><th>METHOD</th></tr></thead><tbody id="payments-body"></tbody></table></div></div>
+    </section>
+    <section id="reports-view" class="view hidden">
+      <div class="section-toolbar"><div><h2>Student fee reports</h2><p>Generate and print an individual student fee statement.</p></div></div>
+      <div class="panel report-panel"><label for="report-student">Select student</label><div class="report-controls"><select id="report-student"><option value="">Choose a student…</option></select><button class="primary-btn" id="generate-report">Generate Report</button></div><div id="report-output"></div></div>
+    </section>
+    <footer>© 2026 Jhansi Sai Laxmi · School Fee Payment Management System</footer>
+  </main>
+  <dialog id="modal"><form id="modal-form" method="dialog"><div class="modal-head"><div><span class="eyebrow">FEE MANAGEMENT</span><h2 id="modal-title">Add student</h2></div><button type="button" class="close-btn" id="close-modal">×</button></div><div id="modal-fields" class="form-grid"></div><div class="modal-actions"><button type="button" class="secondary-btn" id="cancel-modal">Cancel</button><button type="submit" class="primary-btn" id="save-modal">Save</button></div></form></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body></html>
